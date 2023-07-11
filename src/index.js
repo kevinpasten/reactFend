@@ -1,17 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import { App } from './App';
+import { useRef } from 'react';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+root.render(<App />);
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+playlist = [{ url: '33qkK1brpt6t8unIpeM2Oy', favorite: true },
+            { url: '0H6TddUF2M63ZSHGvhk5yy', favorite: true },
+            { url: '3fn4HfVz5dhmE0PG24rh6h', favorite: true },
+            { url: '0DQyTVcDhK9wm0f6RaErWO', favorite: true }];
+
+<div>
+  {
+    playlist.map(song => <SpotifyPlayer url={song.url} favorite={song.favorite} />)
+  }
+</div>
+
+const urlRef = useRef();
+const favoriteRef = useRef();
