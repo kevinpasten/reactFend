@@ -16,8 +16,8 @@ export const MyPlaylist = () => {
                         Favorite
                     </label>
                 </div>
-                <button className='btn btn-success ms-2'><i class="bi bi-plus-circle-fill"></i></button>
-                <button className='btn btn-danger ms-2'><i class="bi bi-trash"></i></button>
+                <button onClick={addSong} className='btn btn-success ms-2'><i class="bi bi-plus-circle-fill"></i></button>
+                <button onClick={removeSong} className='btn btn-danger ms-2'><i class="bi bi-trash"></i></button>
             </div>
             <div>
                 <SpotifyPlayer url="" favorite={true} />
@@ -25,4 +25,43 @@ export const MyPlaylist = () => {
         </div>
     )
 }
+
+const addSong = () => {
+    const url = urlRef.current.value;
+    const favorite = favoriteRef.current.checked;
     
+    setPlaylist(() => {
+      const newSong = {
+        id:uuid(),
+        url: url,
+        favorite: favorite
+        };
+      
+      const newPlaylist = [...playlist, newSong];
+      return newPlaylist;
+    });
+    
+      playlist.push(newSong);
+      console.log(playlist);
+    }
+
+    const removeSong = () => {
+        setPlaylist(() => {
+          const newPlaylist = playlist.filter((song) => song.favorite === true);
+          return newPlaylist
+        })
+      }
+      
+      
+      const setFavorite = (id) => {
+          setPlaylist(() => {
+              const newPlaylist = [...playlist];
+              const song = newPlaylist.find((song) => song.id === id);
+              
+              song.favorite = !(song.favorite);
+              return newPlaylist;
+            });
+        }
+
+    const newPlaylist = [newSong];
+    return newPlaylist;

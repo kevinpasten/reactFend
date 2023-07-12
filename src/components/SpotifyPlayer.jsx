@@ -5,7 +5,7 @@
 */
 export const SpotifyPlayer = ({url, favorite}) => {
 const urlSong = "https://open.spotify.com/embed/album/" + url;    
-const favorite = favorite;
+const favoriteSong = favorite;
 
 /**
 * Render que se ejecuta si el album es favorito
@@ -34,4 +34,5 @@ const favorite = favorite;
     )
     }
 }
-    
+
+// pagina 13
