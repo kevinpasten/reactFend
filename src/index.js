@@ -9,9 +9,3 @@ root.render(<App />);
 
 
 
-
-<div>
-  {
-    playlist.map(song => <SpotifyPlayer url={song.url} favorite={song.favorite} key={song.id} />)
-  }
-</div>
